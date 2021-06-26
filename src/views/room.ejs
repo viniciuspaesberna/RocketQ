@@ -57,7 +57,7 @@
                 <h2 class="sr-only">Perguntas da comunidade</h2>
                 <div class="questions"></div>
                     <% if(!isQuestions) { %> 
-                        <%- include('parts/no-question')  %> 
+                        <%- include('parts/no-question') %> 
                     <% } %> 
 
                     <% questions.forEach(question => { %>
@@ -72,14 +72,18 @@
                             </div>
     
                             <div class="actions">
-                                <a class="check" href="#" data-id="<%= question.id %>">
-                                    <img src="/images/check.svg" alt="Marcar como lida">
-                                    Marcar como lida
-                                </a>
-                                <a class="delete" href="#" data-id="<%= question.id %>">
-                                    <img src="/images/trash.svg" alt="Excluir">
-                                    Excluir
-                                </a>
+                                <form id="answer-form" action="/create-answer/<%= room_id %>" method="POST">
+                                    <label for="answer" class="sr-only">Resposta</label>
+                                    <textarea id="answer" name="answer" required placeholder="Digite sua resposta"></textarea>
+
+                                    <button>Responder</button>
+                                </form>
+                                <div class="buttons">
+                                    <a class="delete" href="#" data-id="<%= question.id %>">
+                                        <img src="/images/trash.svg" alt="Excluir">
+                                        Excluir
+                                    </a>
+                                </div>
                             </div>
                         </article>
                     <% }) %>
@@ -96,12 +100,18 @@
                                     <p><%= questionRead.title %></p>
                                 </div>
                             </div>
-    
+
+                            
                             <div class="actions">
-                                <a class="delete" href="#" data-id="<%= questionRead.id %>">
-                                    <img src="/images/trash.svg" alt="Excluir">
-                                    Excluir
-                                </a>
+                                <div class="answer">
+                                    <p>Resposta: <%= questionRead.answer %></p>
+                                </div>
+                                <div class="buttons">
+                                    <a class="delete" href="#" data-id="<%= questionRead.id %>">
+                                        <img src="/images/trash.svg" alt="Excluir">
+                                        Excluir
+                                    </a>
+                                </div>
                             </div>
                         </article>
                     <% }) %>

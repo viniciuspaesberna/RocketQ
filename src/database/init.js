@@ -13,7 +13,8 @@ const initDB = {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT,
             read INT, 
-            room INT
+            room INT,
+            answer TEXT
         )`);
 
         await db.close()

@@ -28,8 +28,6 @@ module.exports = {
             }
         }
 
-        await db.close()
-
         res.redirect(`/room/${roomId}`)
     },
 
@@ -40,6 +38,7 @@ module.exports = {
 
         const questions = await db.all(`SELECT * FROM questions WHERE room = ${room_id} and read = 0`)
         const questionsRead = await db.all(`SELECT * FROM questions WHERE room = ${room_id} and read = 1`)
+        const answer = await db.all(`SELECT answer FROM questions WHERE room = ${room_id}`)
 
         let isQuestions = true
         if(questions.length == 0){
@@ -48,7 +47,7 @@ module.exports = {
             }
         }
 
-        res.render('room', { room_id, questions, questionsRead , isQuestions})
+        res.render('room', { room_id, questions, questionsRead , isQuestions, answer})
     },
 
     async enter(req, res){

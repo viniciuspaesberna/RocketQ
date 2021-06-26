@@ -30,10 +30,6 @@ module.exports = {
         const { room_id } = req.params
         const { question } = req.body
 
-        if(!question){
-            alert('Preencha a area de pergunta')
-        }
-
         db.run(`INSERT INTO questions(
             title,
             room,

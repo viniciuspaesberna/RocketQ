@@ -1,5 +1,5 @@
 {
-  "name": "nlw-together",
+  "name": "rocketq",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
@@ -8,7 +8,7 @@
     "init-db": "node src/database/init.js"
   },
   "author": "Vinícius Paes Berna",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "nodemon": "^2.0.7"
   },
